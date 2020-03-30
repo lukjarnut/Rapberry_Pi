@@ -68,5 +68,5 @@ if t_flag:
         sys.exit(1)
         
 if h_flag or p_flag or t_flag:        
-    json_exit = json.dumps([{"humi":humidity},{"press":pressure},{"temp":temperature}])
+    json_exit = json.dumps({"WeatherStation":{"humi":humidity,"press":pressure,"temp":temperature}})
     print(json_exit)

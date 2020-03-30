@@ -68,11 +68,10 @@
 			echo "zła jednostka ciśnienia! <br>";
 		}
 	}
+echo '[';
 echo shell_exec("./sensor.py $h_flag $t_flag $p_flag 2>&1"); #executing python script with given attributes
-echo("<br>");
+echo ", <br>";
 #second script reading roll, pitch, yaw from sensehat
-
-if(isset($_GET['r']))
 {
 	$r_flag = "-r";
 }
@@ -103,6 +102,7 @@ if(isset($_GET['u']))
 		echo("Wrong rotation units!");
 	}
 }
-//echo shell_exec("./rot.py $r_flag $pi_flag $y_flag $u_flag 2>&1")
+echo shell_exec("./rot.py $r_flag $pi_flag $y_flag $u_flag 2>&1");
+echo ']';
 
 ?>

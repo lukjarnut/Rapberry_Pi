@@ -63,5 +63,5 @@ else:
             yaw = yaw*0.0174532925
             
 if r_flag or p_flag or y_flag:        
-    json_exit = json.dumps([{"roll":roll},{"pitch":pitch},{"yaw":yaw}])
+    json_exit = json.dumps({"Orientation":{"roll":roll,"pitch":pitch,"yaw":yaw}})
     print(json_exit)
