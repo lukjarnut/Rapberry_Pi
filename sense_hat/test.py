@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
+#script checking if multithreading works
+
 import threading
 import time
 
 value = 0
-def read_value():
+def read_value(): #thread for reading value
     while True:
         global value
         time.sleep(3)
