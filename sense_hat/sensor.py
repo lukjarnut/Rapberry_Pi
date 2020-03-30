@@ -46,7 +46,7 @@ if h_flag:
     elif h_unit == "d":
         humidity = humidity/100
     else:
-        print('-h rong unit')
+        print('-h wrong unit')
         sys.exit(1)
 if p_flag:
    pressure = sense.get_pressure()
