@@ -2,43 +2,41 @@
 	$h_unit = ' ';
 	$t_unit = ' ';
 	$p_unit = ' ';
+
+#getting readings form senshat by web page running python scirpt
 	
-	echo "odczyt ";
-	
-	if(isset($_GET['h']))
+	if(isset($_GET['h'])) #check humidity flag
 	{
-		echo "wilgotności ";
-		$h_unit=$_GET['h'];
+		$h_unit=$_GET['h']; #get units [ *.php?h=% => &h_unit = %]
 		
-		if(strcmp($h_unit, '%') == 0)
+		if(strcmp($h_unit, '%') == 0) #cheking units pt.1
 		{
-			$h_flag = "-h %";
+			$h_flag = "-h %"; #setting flag for python scirpt
 		}
-		elseif(strcmp($h_unit, 'd') == 0)
+		elseif(strcmp($h_unit, 'd') == 0) #cheking units pt.2
 		{
-			$h_flag = "-h d";
+			$h_flag = "-h d"; 
 		}
-		elseif(strcmp($h_unit, " ") == 0)
+		elseif(strcmp($h_unit, " ") == 0) #cathing case when user didn't want to read humisity
 		{
 			$h_flag = " ";
 		}
-		else
+		else #cathing wrong units provided by user
 		{
 			echo "zła jednostka wilgotności! <br>";
 		}
 	}
 	if(isset($_GET['t']))
 	{
-		echo "temperatury ";
 		$t_unit=$_GET['t'];
 		
 		if(strcmp($t_unit, 'c') == 0)
 		{
-			$t_flag = "-p c";
+			$t_flag = "-t c";
 		}
 		elseif(strcmp($t_unit, 'f') == 0)
 		{
-			$t_flag = "-p f";
+			$t_flag = "-t f";
 		}
 		elseif(strcmp($t_unit, " ") == 0)
 		{
@@ -52,7 +50,6 @@
 
 	if(isset($_GET['p']))
 	{
-		echo "ciśnienia ";
 		$p_unit=$_GET['p'];
 		
 		if(strcmp($p_unit, "hpa") == 0)
@@ -73,7 +70,8 @@
 		}
 	}
 
-		// chdir('/home/pi/server_examples/sense_hat/');
-echo ("./sensor.py $h_flag $t_flag $p_flag <br>");
-echo exec('./sensor.py $h_flag $t_flag $p_flag 2>&1');
+if(isset($_GET['r']))
+{
+	$r_flag = "-r";
+}
 ?>
