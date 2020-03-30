@@ -1,20 +1,19 @@
 <?php
 
-//print_r($_POST);
+shell_exec("./led_clear.py 2>&1"); #clear the screen
 
-shell_exec("./led_clear.py 2>&1");
-
-for ($i = 0; $i <= 7; $i++) 
+# $_POST is matrix with coordinates in one argument $_POST[xy] so we need two loops
+for ($i = 0; $i <= 7; $i++) #first axis
 {
-    for ($j = 0; $j <= 7; $j++) 
+    for ($j = 0; $j <= 7; $j++) #second axis
 	{
-		if($_POST["$i$j"] == "r" || $_POST["$i$j"] == "g" || $_POST["$i$j"] == "b")
+		if($_POST["$i$j"] == "r" || $_POST["$i$j"] == "g" || $_POST["$i$j"] == "b") #if we know the color
 		{
-		$color = $_POST["$i$j"];
-		shell_exec("./led.py -x $i -y $j -c $color 2>&1");
+			$color = $_POST["$i$j"];
+			shell_exec("./led.py -x $i -y $j -c $color 2>&1"); #setting pixel with python script at given coordinates ($i $j)
 		}
 	}
 } 
-shell_exec("./screen_rot.py 2>&1");
-header("Location: /sensehat/diode.html");
+shell_exec("./screen_rot.py 2>&1"); #rotating screen caused by it's placement
+header("Location: /sensehat/diode.html"); #return to previus page (choosing pixel to light)
 ?>

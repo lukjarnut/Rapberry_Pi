@@ -3,7 +3,9 @@
 	$h_unit = ' ';
 	$t_unit = ' ';
 	$p_unit = ' ';
+	
 #getting readings form senshat by web page running python scirpt
+
 if(isset($_GET['h'])) #check humidity flag
 {
 	$h_unit=$_GET['h']; #get units [ *.php?h=% => &h_unit = %]
@@ -12,7 +14,7 @@ if(isset($_GET['h'])) #check humidity flag
 	{
 		$h_flag = "-h %"; #setting flag for python scirpt
 	}
-	elseif(strcmp($h_unit, 'd') == 0) #cheking units pt.2
+	elseif(strcmp($h_unit, 'd') == 0)
 	{
 		$h_flag = "-h d"; 
 	}
@@ -68,7 +70,7 @@ if(isset($_GET['p']))
 		echo "zła jednostka ciśnienia! <br>";
 	}
 }
-echo '[';
+echo '['; #begining output JSON as table
 echo shell_exec("./sensor.py $h_flag $t_flag $p_flag 2>&1"); #executing python script with given attributes
 echo ", <br>";
 #second script reading roll, pitch, yaw from sensehat
@@ -104,6 +106,6 @@ if(isset($_GET['u']))
 	}
 }
 echo shell_exec("./rot.py $r_flag $pi_flag $y_flag $u_flag 2>&1");
-echo ']';
+echo ']'; #enging JSON table
 
 ?>

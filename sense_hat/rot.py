@@ -8,14 +8,16 @@ import json
 
 sense = SenseHat()
 
-r_flag = 0
-p_flag = 0
-y_flag = 0
-unit = " "
-
 roll = None
 pitch = None
 yaw = None
+
+r_flag = False
+p_flag = False
+y_flag = False
+unit = " "
+
+scaler = 0.0174532925
 
 sysarg = sys.argv[1:]
 
@@ -27,11 +29,11 @@ except getopt.GetoptError as err:
 
 for opt, arg in opts:
     if opt in '-r':
-        r_flag = 1
+        r_flag = True
     if opt in '-p':
-        p_flag = 1
+        p_flag = True
     if opt in '-y':
-        y_flag = 1
+        y_flag = True
     if opt in '-u':
         unit = arg
         
@@ -44,23 +46,23 @@ else:
     if r_flag:
        roll = orient["roll"]
        if unit == 'd':
-            pass
+            pass          #if chosen degrees don't scale
        elif unit == 'r':
-            roll = roll*0.0174532925
+            roll = roll*scaler
             
     if p_flag:
        pitch = orient["pitch"]
        if unit == 'd':
             pass
        elif unit == 'r':
-            pitch = pitch*0.0174532925
+            pitch = pitch*scaler
             
     if y_flag:
        yaw = orient["yaw"]
        if unit == 'd':
             pass
        elif unit == 'r':
-            yaw = yaw*0.0174532925
+            yaw = yaw*scaler
             
 if r_flag or p_flag or y_flag:        
     json_exit = json.dumps({"Orientation":{"roll":roll,"pitch":pitch,"yaw":yaw}})
