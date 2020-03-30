@@ -3,7 +3,6 @@
 	$h_unit = ' ';
 	$t_unit = ' ';
 	$p_unit = ' ';
-
 #getting readings form senshat by web page running python scirpt
 if(isset($_GET['h'])) #check humidity flag
 {

@@ -28,7 +28,6 @@ if x < 0 or x > 7 or y < 0 or y > 7:
     exit(1)
 
 else:
-    sense.clear(0, 0, 0) #if wrong coordinates provided nothing will change
     sense.set_pixel(x, y, 255, 20, 147)
                 
 
