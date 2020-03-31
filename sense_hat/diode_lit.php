@@ -10,11 +10,9 @@ for ($i = 0; $i <= 7; $i++) #first axis
 		if($_POST["$i$j"] == "r" || $_POST["$i$j"] == "g" || $_POST["$i$j"] == "b") #if we know the color
 		{
 			$color = $_POST["$i$j"];
-			shell_exec("./led.py -x $j -y $i -c $color 2>&1"); #setting pixel with python script at given coordinates ($i $j)
+			shell_exec("./led.py -x $i -y $j -c $color 2>&1"); #setting pixel with python script at given coordinates ($i $j)
 		}
 	}
 } 
-
-shell_exec("./screen_rot.py 2>&1"); #rotating screen caused by it's placement
 header("Location: /sensehat/diode.html"); #return to previus page (choosing pixel to light)
 ?>
