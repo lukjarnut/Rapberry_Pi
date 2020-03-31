@@ -6,7 +6,7 @@ import sys
 import getopt
 import json
 
-sense = SenseHat()
+sense = SenseHat() 
 
 h_flag=0
 p_flag=0
@@ -23,15 +23,15 @@ temperature = None
 sysarg = sys.argv[1:]
 
 try:
-    opts, args = getopt.getopt(sysarg, ':h:p:t:')
+    opts, args = getopt.getopt(sysarg, ':h:p:t:') #getting opts (-h % -t c ...)
 except getopt.GetoptError as err:
     print(err)
     sys.exit(1)
 
-for opt, arg in opts:
+for opt, arg in opts: #handling opts
     if opt in '-h':
         h_flag = 1
-        h_unit = arg
+        h_unit = arg #getting argument form -h flag
     if opt in '-p':
         p_flag = 1
         p_unit = arg
@@ -46,7 +46,7 @@ if h_flag:
     elif h_unit == "d":
         humidity = humidity/100
     else:
-        print('-h rong unit')
+        print('-h wrong unit')
         sys.exit(1)
 if p_flag:
    pressure = sense.get_pressure()
@@ -62,11 +62,11 @@ if t_flag:
     if ( t_unit == 'C' or t_unit == 'c' ):
         pass
     elif t_unit == 'F' or t_unit == 'f':
-        temperature = 32+1.8*float(temperature)
+        temperature = 32+1.8*float(temperature) #rescaling C to F
     else:
         print('-t wrong unit')
         sys.exit(1)
         
 if h_flag or p_flag or t_flag:        
-    json_exit = json.dumps([{"humi":humidity},{"press":pressure},{"temp":temperature}])
+    json_exit = json.dumps({"WeatherStation":{"humi":humidity,"press":pressure,"temp":temperature}})
     print(json_exit)

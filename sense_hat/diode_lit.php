@@ -14,5 +14,7 @@ for ($i = 0; $i <= 7; $i++) #first axis
 		}
 	}
 } 
+
+shell_exec("./screen_rot.py 2>&1"); #rotating screen caused by it's placement
 header("Location: /sensehat/diode.html"); #return to previus page (choosing pixel to light)
 ?>

@@ -3,14 +3,14 @@
 $period=0;
 
 if(isset($_GET['period'])){
-	echo "Changing period of blinking diode... <br>";
+	echo "Changing period of blnking diode... <br>";
 	$period=$_GET['period'];
 	$command = './zapis.py ' . '-w' . ' ' . $period;
 	$cos = passthru($command);
 	echo($cos);
 }
 else {
-	echo "Reading period of blinking diode... <br>";
+	echo "Readind period of blnking diode... <br>";
 	$comman = './zapis.py ' . '-r';
 	$co = passthru($comman);
 	echo($co);
