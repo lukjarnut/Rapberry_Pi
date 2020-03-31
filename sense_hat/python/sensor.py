@@ -40,7 +40,7 @@ for opt, arg in opts: #handling opts
         t_unit = arg
         
 if h_flag:
-    humidity = sense.get_humidity()
+    humidity = round(sense.get_humidity(),4)
     if h_unit == "%":
         pass
     elif h_unit == "d":
@@ -49,7 +49,7 @@ if h_flag:
         print('-h wrong unit')
         sys.exit(1)
 if p_flag:
-   pressure = sense.get_pressure()
+   pressure = round(sense.get_pressure(),4)
    if p_unit == "hpa":
         pass 
    elif p_unit == "mmhg":
@@ -58,7 +58,7 @@ if p_flag:
         print('-p wrong unit')
         sys.exit(1)
 if t_flag:
-    temperature = sense.get_temperature()
+    temperature = round(sense.get_temperature(),4)
     if ( t_unit == 'C' or t_unit == 'c' ):
         pass
     elif t_unit == 'F' or t_unit == 'f':

@@ -14,6 +14,6 @@ for ($i = 0; $i <= 7; $i++) #first axis
 		}
 	}
 } 
-header("Location: /sensehat/diode.html"); #return to previus page (choosing pixel to light)
+header("Location: /sense_hat/diode.html"); #return to previus page (choosing pixel to light)
 
 ?>

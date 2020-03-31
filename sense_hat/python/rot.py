@@ -44,21 +44,21 @@ if unit != 'r' and unit != 'd':
     
 else:
     if r_flag:
-       roll = orient["roll"]
+       roll = round(orient["roll"],4)
        if unit == 'd':
             pass          #if chosen degrees don't scale
        elif unit == 'r':
             roll = roll*scaler
             
     if p_flag:
-       pitch = orient["pitch"]
+       pitch = round(orient["pitch"],4)
        if unit == 'd':
             pass
        elif unit == 'r':
             pitch = pitch*scaler
             
     if y_flag:
-       yaw = orient["yaw"]
+       yaw = round(orient["yaw"],4)
        if unit == 'd':
             pass
        elif unit == 'r':
