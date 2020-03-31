@@ -71,7 +71,7 @@ if(isset($_GET['p']))
 	}
 }
 echo '['; #begining output JSON as table
-echo shell_exec("./sensor.py $h_flag $t_flag $p_flag 2>&1"); #executing python script with given attributes
+echo shell_exec("./python/sensor.py $h_flag $t_flag $p_flag 2>&1"); #executing python script with given attributes
 echo ", <br>";
 
 #second script reading roll, pitch, yaw from sensehat
@@ -106,7 +106,7 @@ if(isset($_GET['u']))
 		echo("Wrong rotation units!");
 	}
 }
-echo shell_exec("./rot.py $r_flag $pi_flag $y_flag $u_flag 2>&1");
+echo shell_exec("./python/rot.py $r_flag $pi_flag $y_flag $u_flag 2>&1");
 echo ", <br>"; #comma for JSON, break for neat look
 echo file_get_contents('./joy_data.dat'); #read data from file
 echo ']'; #enging JSON table
